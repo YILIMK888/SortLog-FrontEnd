@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    // Specify the Docker image that contains Node.js and other necessary tools
+    docker {
+      image 'node:14' // Adjust the Node.js version as needed
+      args '-u root' // Run Docker container as root to install Yarn
+    }
 
   stages {
     stage('Checkout') {
