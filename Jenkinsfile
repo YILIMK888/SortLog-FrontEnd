@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+        docker {
+            image 'node:lts-bullseye-slim' 
+            args '-p 3000:3000' 
+        }
+    }
   
   stages {
     stage('Checkout') {
@@ -11,7 +16,7 @@ pipeline {
       }
     }
 
- 
+
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
