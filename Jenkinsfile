@@ -5,6 +5,7 @@ pipeline {
       image 'node:14' // Adjust the Node.js version as needed
       args '-u root' // Run Docker container as root to install Yarn
     }
+  }
 
   stages {
     stage('Checkout') {
