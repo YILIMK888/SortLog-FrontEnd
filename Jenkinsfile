@@ -11,16 +11,7 @@ pipeline {
       }
     }
 
-    stage('Install Yarn') {
-      steps {
-        script {
-          docker.image('node:14').inside('-u root') {
-            sh 'npm install -g yarn'
-          }
-        }
-      }
-    }
-
+ 
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
