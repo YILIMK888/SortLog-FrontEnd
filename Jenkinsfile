@@ -25,13 +25,6 @@ pipeline {
       }
     }
 
-    '''stage('Test') {
-      steps {
-        // Run tests if you have any
-        sh 'npm run test'
-      }
-    }'''
-
     stage('Deploy') {
         steps {
             // Install AWS CLI (if not already installed)
