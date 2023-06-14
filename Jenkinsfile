@@ -11,6 +11,12 @@ pipeline {
       }
     }
 
+    stage('Install Yarn') {
+      steps {
+        sh 'npm install -g yarn'
+      }
+    }
+
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
@@ -24,6 +30,7 @@ pipeline {
         sh 'yarn run build'
       }
     }
+
 
     stage('Deploy') {
         steps {
