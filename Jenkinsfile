@@ -3,9 +3,7 @@ pipeline {
 
   tools {nodejs "NodeJS-18.16.0"}
   
- 
-
-    
+  stages {    
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
