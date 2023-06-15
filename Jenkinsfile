@@ -11,18 +11,21 @@ pipeline {
       }
     }
 
-    
+    environment {
+        PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin
+    }
+
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
-        sh 'npm install' // or 'npm install'
+        sh 'yarn install' // or 'npm install'
       }
     }
 
     stage('Build') {
       steps {
         // Build the Next.js project
-        sh 'npm run build'
+        sh 'yarn run build'
       }
     }
 
