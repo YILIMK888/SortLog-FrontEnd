@@ -15,14 +15,14 @@ pipeline {
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
-        sh 'yarn install' // or 'npm install'
+        sh 'npm install' // or 'npm install'
       }
     }
 
     stage('Build') {
       steps {
         // Build the Next.js project
-        sh 'yarn run build'
+        sh 'npm run build'
       }
     }
 
