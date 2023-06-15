@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-        docker {
-            image 'node:lts-bullseye-slim' 
-            args '-p 3000:3000' 
-        }
-    }
+  agent any
   
   stages {
     stage('Checkout') {
@@ -16,23 +11,18 @@ pipeline {
       }
     }
 
-    stage('Initialize'){
-        def dockerHome = tool 'myDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
-
-
+    
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
-        sh 'npm install' // or 'npm install'
+        sh 'yarn install' // or 'npm install'
       }
     }
 
     stage('Build') {
       steps {
         // Build the Next.js project
-        sh 'npm run build'
+        sh 'yarn run build'
       }
     }
 
