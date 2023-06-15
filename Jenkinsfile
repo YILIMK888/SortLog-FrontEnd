@@ -1,21 +1,8 @@
 pipeline {
   agent any
-
-  environment {
-        PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin
-    }
   
   stages {
-    stage('Checkout') {
-      steps {
-        // Checkout your source code from your version control system (e.g., Git)
-        checkout([$class: 'GitSCM',
-              branches: [[name: '*/main']], // Specify the branch to checkout
-              userRemoteConfigs: [[url: 'https://github.com/YILIMK888/SortLog-FrontEnd.git']]])
-      }
-    }
-
-    
+        
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
