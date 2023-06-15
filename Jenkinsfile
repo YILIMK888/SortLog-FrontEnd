@@ -19,16 +19,9 @@ pipeline {
       }
     }
 
-    stage('Install Python as root') {
+    stage('Install Python') {
             steps {
-                script {
-                    sh '''
-                    su root -c "chown -R _apt:root /var/lib/apt/lists"
-                    su root -c "chmod 755 /var/lib/apt/lists"
-                    su root -c "apt-get update"
-                    su root -c "apt-get install -y python3"
-                    '''
-                }
+                sh 'apt-get update && apt-get install -y python3'
             }
         }
 
