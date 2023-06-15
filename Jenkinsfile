@@ -23,8 +23,10 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    apt-get update
-                    apt-get install -y python3
+                    sudo chown -R _apt:root /var/lib/apt/lists
+                    sudo chmod 755 /var/lib/apt/lists
+                    sudo apt-get update
+                    sudo apt-get install -y python3
                     '''
                 }
             }
