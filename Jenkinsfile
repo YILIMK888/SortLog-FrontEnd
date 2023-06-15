@@ -19,10 +19,9 @@ pipeline {
       }
     }
 
-    stage('Install Python') {
+    stage('Install Python as root') {
             steps {
-                sh 'sudo apt-get update && sudo apt-get install -y python3'
-                sh 'python --version'
+                sh 'su root -c "apt-get update && apt-get install -y python3"
             }
         }
 
