@@ -1,15 +1,19 @@
 pipeline {
   agent any
+
+  tools {nodejs "NodeJS-18.16.0"}
   
   stages {
-    
-     stage('Check NodeJS') {
+    stage('Checkout') {
       steps {
-        // Build the Next.js project
-        sh 'node --version'
+        // Checkout your source code from your version control system (e.g., Git)
+        checkout([$class: 'GitSCM',
+              branches: [[name: '*/main']], // Specify the branch to checkout
+              userRemoteConfigs: [[url: 'https://github.com/YILIMK888/SortLog-FrontEnd.git']]])
       }
     }
-        
+
+    
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
