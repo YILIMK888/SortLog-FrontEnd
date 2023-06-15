@@ -2,8 +2,9 @@ pipeline {
   agent any
 
   tools {nodejs "NodeJS-18.16.0"}
-  
-  stages {    
+
+  stages {
+    
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
@@ -18,6 +19,13 @@ pipeline {
       }
     }
 
+    stage('Install Python') {
+            steps {
+                sh 'apt-get update && apt-get install -y python3'
+                sh 'python --version'
+            }
+        }
+
 
     stage('Deploy') {
         steps {
@@ -28,6 +36,7 @@ pipeline {
             withAWS(credentials: 'mk-aws-credentials', region: 'ap-southeast-2') 
             {
                 // Deploy to AWS S3
+                echo "deploy to S3 "
                 sh 'aws s3 sync .next/ s3://sortlog-frontend-host-bucket'
                 }
         }
