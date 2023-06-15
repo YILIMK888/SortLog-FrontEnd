@@ -2,6 +2,13 @@ pipeline {
   agent any
   
   stages {
+    
+     stage('Check NodeJS') {
+      steps {
+        // Build the Next.js project
+        sh 'node --version'
+      }
+    }
         
     stage('Install Dependencies') {
       steps {
