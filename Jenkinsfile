@@ -1,5 +1,9 @@
 pipeline {
   agent any
+
+  environment {
+        PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin
+    }
   
   stages {
     stage('Checkout') {
@@ -11,10 +15,7 @@ pipeline {
       }
     }
 
-    environment {
-        PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin
-    }
-
+    
     stage('Install Dependencies') {
       steps {
         // Install project dependencies using Node.js and npm or yarn
