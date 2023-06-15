@@ -20,10 +20,10 @@ pipeline {
     }
 
     stage('Install Python as root') {
-            steps {
-                sh 'su root -c "apt-get update && apt-get install -y python3"
-            }
-        }
+      steps {
+        sh 'su root -c "apt-get update && apt-get install -y python3"'
+      }
+    }
 
 
     stage('Deploy') {
