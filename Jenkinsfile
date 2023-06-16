@@ -15,7 +15,7 @@ pipeline {
     stage('Build') {
       steps {
         // Build the Next.js project
-        sh 'yarn run build'
+        sh 'yarn run export'
       }
     }
 
