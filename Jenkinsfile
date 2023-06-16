@@ -19,18 +19,16 @@ pipeline {
       }
     }
 
-    stage('Install Python') {
+    stage('Check Python Version') {
             steps {
-                sh 'sudo apt-get update && sudo apt-get install -y python3'
+                sh 'python3 --version'
             }
         }
 
 
     stage('Deploy') {
         steps {
-            // Install AWS CLI (if not already installed)
-            sh 'pip install awscli --upgrade --user'
-
+            
             // Set AWS credentials
             withAWS(credentials: 'mk-aws-credentials', region: 'ap-southeast-2') 
             {
