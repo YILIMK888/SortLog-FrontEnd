@@ -15,15 +15,11 @@ pipeline {
     stage('Build') {
       steps {
         // Build the Next.js project
-        sh 'yarn run export'
+        sh 'yarn export'
       }
     }
 
-    stage('Check Python Version') {
-            steps {
-                sh 'python3 --version'
-            }
-        }
+    
 
 
     stage('Deploy') {
@@ -34,7 +30,7 @@ pipeline {
             {
                 // Deploy to AWS S3
                 echo "deploy to S3 "
-                sh 'aws s3 sync . s3://sortlog-frontend-host-bucket'
+                sh 'aws s3 sync out/ s3://sortlog-frontend-host-bucket'
                 }
         }
     }
