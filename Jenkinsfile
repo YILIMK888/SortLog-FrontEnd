@@ -23,16 +23,14 @@ pipeline {
 
 
     stage('Deploy') {
-        steps {
-            
-            // Set AWS credentials
-            withAWS(credentials: 'mk-aws-credentials', region: 'ap-southeast-2') 
-            {
-                // Deploy to AWS S3
-                echo "deploy to S3 "
-                sh 'aws s3 sync out/ s3://sortlog-frontend-host-bucket'
-                }
+      steps {          
+        // Set AWS credentials
+        withAWS(credentials: 'mk-aws-credentials', region: 'ap-southeast-2') {
+         // Deploy to AWS S3
+         echo "deploy to S3 "
+         sh 'aws s3 sync out/ s3://sortlog-frontend-host-bucket'
         }
+      }
     }
   }
 }
